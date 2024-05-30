@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'blog/css/blog_base.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <title>
+        {% block title %}
+            Interesting News
+        {% endblock %}
+    </title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!--
+        HEADER
+    -->
+    <header>
+      <!--
+          NAV
+      -->
+      <div class="nav container">
+
+        <!--
+            LOGO
+        -->
+        <a href="{% url 'home' %}" class="logo">Interesting <span>News<span></a>
+        
+        <!--
+            Login Btn
+        -->
+        <a href="#" class="login">Login</a>
+      </div>
+    </header>
+
+    {% block home_section %}
+    {% endblock %}
+
+    <section class="post-header">
+        <div class="header-content post-container">
+            <!-- Back to home -->
+            <a href="{% url 'home' %}" class="back-home">HOME</a>
+            <!-- Title -->
+            {% comment %} <h1>{{ post.title }}</h1> {% endcomment %}
+            <h1 class="header-title">Test post title :))))</h1>
+            {% comment %} <!-- Meta -->
+            <small>By: {{ post.author }} -- Created at {{ post.date|date:"Y-m-d H:i" }}</small>  {% endcomment %}
+
+            <!-- Post Image -->
+            <img src="{% static 'images/post-4.jpg' %}" alt="post image" class="header-img">
+        </div>
+    </section>
+
+    <section class="post-content post-container">
+        <h2 class="sub-heading">Sub heading test post</h2>
+        <p class="post-text">
+            1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+
+        <h2 class="sub-heading">Sub heading 2 test post</h2>
+        <h2 class="sub-heading">Sub heading 3 test post</h2>
+        <p class="post-text">
+            1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+
+        <h2 class="sub-heading">Sub heading 4 test post</h2>
+        <p class="post-text">
+            1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+        <p class="post-text">
+            4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra tincidunt diam, quis elementum metus. Vivamus ut tempus nulla. Aenean feugiat posuere urna non maximus. Phasellus sit amet imperdiet felis. Fusce quis imperdiet velit. Nulla vitae iaculis dolor. Duis condimentum scelerisque mi, eu lobortis dui convallis dictum. Curabitur vitae mi at purus accumsan rhoncus sit amet dapibus ipsum. Suspendisse quam est, vulputate quis pulvinar vitae, malesuada in quam. Cras vulputate at nulla non aliquam. 
+        </p>
+
+        <div class="share post-container">
+            <span class="share-title"> Share this article </span>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+    
+    </section>
+
+    <br/>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <div class="footer container">
+      <p>Copyright &copy; 2024 Interesting News. All rights reserved.</p>
+
+      <div class="social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+      </div>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+</body>
+</html>

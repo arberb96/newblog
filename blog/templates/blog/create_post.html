@@ -1,0 +1,129 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+</head>
+<body>
+    <h1>Create a New Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ post_form.as_p }}
+        {{ paragraph_formset.management_form }}
+        <div id="paragraph-formset">
+            {% for form in paragraph_formset %}
+                <div class="paragraph-form">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" onclick="addParagraph()">Add Paragraph</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function addParagraph() {
+            let totalForms = document.querySelector("#id_paragraph_set-TOTAL_FORMS");
+            let formCopy = document.querySelector('.paragraph-form').outerHTML;
+            let formNum = parseInt(totalForms.value);
+            formCopy = formCopy.replace(/-0-/g, `-${formNum}-`).replace(/_0_/g, `_${formNum}_`);
+
+            document.getElementById('paragraph-formset').insertAdjacentHTML('beforeend', formCopy);
+            totalForms.value = formNum + 1;
+        }
+    </script>
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-row input, .form-row textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .add-paragraph {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .add-paragraph button {
+            background-color: #007BFF;
+        }
+        .add-paragraph button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create a New Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ post_form.as_p }}
+        {{ paragraph_formset.management_form }}
+        <div id="paragraph-formset">
+            {% for form in paragraph_formset %}
+                <div class="paragraph-form">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" onclick="addParagraph()">Add Paragraph</button>
+        <button type="submit">Submit</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary back-button">Back</a>
+    </form>
+
+    <script>
+        function addParagraph() {
+            var totalForms = document.querySelector("#id_paragraphs-TOTAL_FORMS");
+            var currentFormCount = parseInt(totalForms.value);
+            var formCopyTarget = document.querySelector('.paragraph-form:last-of-type');
+            var newForm = formCopyTarget.cloneNode(true);
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp('-' + (currentFormCount - 1) + '-', 'g'), '-' + currentFormCount + '-');
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp('_' + (currentFormCount - 1) + '_', 'g'), '_' + currentFormCount + '_');
+            formCopyTarget.parentNode.insertBefore(newForm, formCopyTarget.nextSibling);
+            totalForms.value = currentFormCount + 1;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.post-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Header styles */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+/* Meta information styling */
+.post-meta small {
+    display: block;
+    text-align: center;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+.post-meta a {
+    color: #5A5A5A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-meta a:hover {
+    color: #333;
+}
+
+/* Horizontal rule to separate meta and body */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin-bottom: 20px;
+}
+
+/* Main body styling */
+.post-body {
+    padding: 0 15%;
+    text-align: justify;
+}
+
+.paragraph {
+    margin-bottom: 20px;
+}
+
+.paragraph-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.paragraph-text {
+    margin-top: 5px;
+}
+
+.paragraph-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #565e64;
+}
+
+.back-button {
+    text-align: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .post-body {
+        padding: 0 5%;
+    }
+
+    .paragraph-image {
+        width: 100%; /* Ensures the image is responsive and fits small devices */
+    }
+}

@@ -1,0 +1,189 @@
+{% extends 'blog/blog_base.html' %}
+
+<head>
+    {% load static %}
+
+    {% block head %}
+        <link rel="stylesheet" href="{% static 'blog/css/blog_home.css' %}">
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block home_section %}
+        <section class="home" id="home">
+            <div class="home-text container">
+                <h2 class="home-title">Interesting News</h2>
+                <span class="home-subtitle">The latest news from around the world</span>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block content %}
+
+
+    {% comment %} <h1>Posts</h1> {% endcomment %}
+
+        {% comment %} <section class="post container">
+            
+            
+            <div class="post-box">
+                <img src="{% static 'images/post-1.jpg' %}" alt="" class="post-img">
+                
+                <a href="{% url 'test-post' %}" class="post-title">
+                    How to create a post in django blog
+                </a>
+
+                <span class="post-date">1 hour ago</span>
+                <p class="post-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Repellendus, deserunt.
+                </p>
+
+                <!-- Profile -->
+                <div class="profile">
+                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
+                    <span class="profile-name">John Doe</span>
+                </div>
+            </div>
+
+
+            <div class="post-box">
+                <img src="{% static 'images/post-2.jpg' %}" alt="" class="post-img">
+                
+                <a href="{% url 'test-post' %}" class="post-title">
+                    How to create a post in django blog
+                </a>
+
+                <span class="post-date">1 hour ago</span>
+                <p class="post-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Repellendus, deserunt.
+                </p>
+
+                <!-- Profile -->
+                <div class="profile">
+                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
+                    <span class="profile-name">John Doe</span>
+                </div>
+            </div>
+
+
+            <div class="post-box">
+                <img src="{% static 'images/post-3.jpg' %}" alt="" class="post-img">
+                
+                <a href="{% url 'test-post' %}" class="post-title">
+                    How to create a post in django blog
+                </a>
+
+                <span class="post-date">1 hour ago</span>
+                <p class="post-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Repellendus, deserunt.
+                </p>
+
+                <!-- Profile -->
+                <div class="profile">
+                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
+                    <span class="profile-name">John Doe</span>
+                </div>
+            </div>
+
+
+            <div class="post-box">
+                <img src="{% static 'images/post-4.jpg' %}" alt="" class="post-img">
+                
+                <a href="{% url 'test-post' %}" class="post-title">
+                    How to create a post in django blog
+                </a>
+
+                <span class="post-date">1 hour ago</span>
+                <p class="post-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Repellendus, deserunt.
+                </p>
+
+                <!-- Profile -->
+                <div class="profile">
+                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
+                    <span class="profile-name">John Doe</span>
+                </div>
+            </div>
+
+        </section> {% endcomment %}
+
+        <section class="post container">
+            {% for post in page_obj %}
+                <div class="post-box">
+                    <img src="{{ post.image.url }}" alt="" class="post-img">
+                    
+                    <a href="{% url 'post-detail' post.id %}" class="post-title">
+                        {{ post.title }}
+                    </a>
+
+                    <span class="post-date">
+                        <box-icon name='calendar' class="calendar-icon"></box-icon>
+                        {{ post.date|timesince }} ago
+                        {% comment %} 12/01/2023 {% endcomment %}
+                    </span>
+
+                    <span class="post-date">
+                        <box-icon name='calendar' class="calendar-icon"></box-icon>
+                        {% comment %} {{ post.date|timesince }} ago {% endcomment %}
+                        {{ post.date }}
+                        {% comment %} 12/01/2023 {% endcomment %}
+                    </span>
+                    
+                    {% comment %} <p class="post-description">
+                        {{ post.excerpt }}
+                    </p> {% endcomment %}
+
+                    <p class="post-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Repellendus, deserunt. Lorem ipsum sit dolor sit amet consectetur
+                        adipisicing elit. Repellendus, deserunt. Lorem ipsum blablabla
+                        arber arber arber arber bla bla
+                    </p>
+
+                    <!-- Profile -->
+                    <div class="profile">
+                        {% comment %} <img src="{{ post.author.profile_image.url }}" alt="" class="profile-img"> {% endcomment %}
+                        <img src="{{ post.author.profile.profile_image.url }}" alt="" class="profile-img">
+                        {% comment %} <span class="profile-name">{{ post.author.name }}</span> {% endcomment %}
+                        <span class="profile-name">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No posts available.</p>
+            {% endfor %}
+        </section>
+
+        <section class="container">
+            <div class="pagination">
+                <a href="?page=1&rows={{ rows }}"><box-icon name='chevrons-left'></box-icon></a>
+
+                {% if page_obj.number|add:'-3' > 1 %}
+                    <span>...</span>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        {% if num == page_obj.number %}
+                            <a class="active">{{ num }}</a>
+                        {% else %}
+                            <a href="?page={{ num }}&rows={{ rows }}">{{ num }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.number|add:'3' < page_obj.paginator.num_pages %}
+                    <span>...</span>
+                {% endif %}
+
+                <a href="?page={{ page_obj.paginator.num_pages }}&rows={{ rows }}"><box-icon name='chevrons-right'></box-icon></a>
+            </div>
+        </section>
+    {% endblock %}
+</body>

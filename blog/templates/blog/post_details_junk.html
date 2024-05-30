@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'blog/css/post_details.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ post.title_tag }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="post-header">
+    <h1>{{ post.title }}</h1>
+    <a href="{% url 'home' %}" class="btn btn-secondary back-button">Back</a>
+</div>
+<div class="post-meta">
+    <small>By: {{ post.author }} -- Created at {{ post.date|date:"Y-m-d H:i" }}
+    <a href="{% url 'update-post' post.pk %}">Edit</a> - 
+    <a href="{% url 'delete-post' post.pk %}">Delete</a></small>
+</div>
+<hr>
+<div class="post-body">
+    <p>{{ post.body|safe }}</p>
+
+    {% for paragraph in post.paragraphs.all %}
+    <div class="paragraph">
+        <div class="paragraph-title">{{ paragraph.title }}</div>
+        {% if paragraph.image %}
+            <img src="{{ paragraph.image.url }}" alt="{{ paragraph.title }}" class="paragraph-image">
+        {% endif %}
+        <div class="paragraph-text">{{ paragraph.text|linebreaks }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
