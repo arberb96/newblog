@@ -117,7 +117,7 @@
         <section class="post container">
             {% for post in page_obj %}
                 <div class="post-box">
-                    <img src="{{ post.image.url }}" alt="" class="post-img">
+                    <img src="{{ post.image.url }}" alt="NOT FOUND" class="post-img">
                     
                     <a href="{% url 'post-detail' post.id %}" class="post-title">
                         {{ post.title }}

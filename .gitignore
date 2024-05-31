@@ -1,2 +1,8 @@
 venv/
 *.pyc
+paragraph_photos/*
+post_photos/*
+profile_pics/*
+media/paragraph_photos/*
+media/post_photos/*
+media/profile_pics/*
