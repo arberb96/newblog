@@ -38,7 +38,6 @@ if not DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
-    "blog",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -46,6 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     
+    # PACKAGES
+    "storages",
+    
+    # INTERNAL APPS
+    "blog",
 ]
 
 MIDDLEWARE = [
@@ -166,10 +170,19 @@ STATICFILES_DIRS = [
 # Directory where collected static files will be stored
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+from .cdn.conf import *
+
+# digitial ocean bucket
+
+#  https://blogbucket.sfo3.digitaloceanspaces.com
+
 # Ensure you have this setting
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+#blogbucketdev - secret key - Vtq25OXfJKtm8aEmx3LQScNaKeP7pqMA2/EcbTXm7w8
+#blogbucketprod - secret key - pBftHYK8N9y/YB0aEvjn6i0uEqfLfj8qydWLwPbLGyI

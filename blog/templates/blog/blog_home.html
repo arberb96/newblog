@@ -136,22 +136,15 @@
                         {% comment %} 12/01/2023 {% endcomment %}
                     </span>
                     
-                    {% comment %} <p class="post-description">
-                        {{ post.excerpt }}
-                    </p> {% endcomment %}
-
                     <p class="post-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Repellendus, deserunt. Lorem ipsum sit dolor sit amet consectetur
-                        adipisicing elit. Repellendus, deserunt. Lorem ipsum blablabla
-                        arber arber arber arber bla bla
+                        {{ post.paragraphs.first.text|linebreaks }}
                     </p>
 
                     <!-- Profile -->
                     <div class="profile">
-                        {% comment %} <img src="{{ post.author.profile_image.url }}" alt="" class="profile-img"> {% endcomment %}
+                        
                         <img src="{{ post.author.profile.profile_image.url }}" alt="" class="profile-img">
-                        {% comment %} <span class="profile-name">{{ post.author.name }}</span> {% endcomment %}
+                        
                         <span class="profile-name">{{ post.author.first_name }} {{ post.author.last_name }}</span>
                     </div>
                 </div>

@@ -6,3 +6,4 @@ profile_pics/*
 media/paragraph_photos/*
 media/post_photos/*
 media/profile_pics/*
+*.sqlite3

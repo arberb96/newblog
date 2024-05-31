@@ -68,7 +68,6 @@
     text-transform: uppercase;
     font-weight: 400;
     margin-top: 4px;
-    /* background-color: red; */
 }
 
 .calendar-icon {
@@ -102,6 +101,10 @@
     object-position: center;
     border: 2px solid var(--second-color);
 }
+
+/* .paragraph-text {
+    margin-top: 1rem;
+} */
 
 /* PAGINATION */
 .pagination {
