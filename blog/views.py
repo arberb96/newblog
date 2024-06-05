@@ -111,7 +111,7 @@ class DeletePostView(DeleteView):
 #         'paragraph_formset': paragraph_formset
 #     })
 
-@login_required
+@login_required(login_url='login')
 def create_post(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
@@ -125,9 +125,9 @@ def create_post(request):
                 paragraph_formset.save()
                 return redirect('home')
             else:
-                print(paragraph_formset.errors)  # Debugging: Print formset errors
+                print(paragraph_formset.errors)
         else:
-            print(post_form.errors)  # Debugging: Print form errors
+            print(post_form.errors)
     else:
         post_form = PostForm()
         paragraph_formset = ParagraphFormSet()
@@ -173,7 +173,7 @@ class SignUpForm(forms.ModelForm):
         if password != confirm_password:
             raise forms.ValidationError("Passwords do not match.")
         
-def register(request):
+def register_view(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST, request.FILES)
@@ -204,7 +204,7 @@ def register(request):
         'profile_form': profile_form
     })
     
-def user_login(request):
+def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -213,10 +213,12 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                next_url = request.POST.get('next', 'home')  # Use POST to get the 'next' parameter
+                return redirect(next_url)
     else:
         form = AuthenticationForm()
-    return render(request, 'blog/blog_login.html', {'form': form})
+        next_url = request.GET.get('next', '')
+    return render(request, 'blog/blog_login.html', {'form': form, 'next': next_url})
 
 def user_logout(request):
     logout(request)

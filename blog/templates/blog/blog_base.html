@@ -10,74 +10,49 @@
     <link rel="stylesheet" href="{% static 'blog/css/blog_base.css' %}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> {% endcomment %}
     <title>
         {% block title %}
-            Interesting News
+            TheBuzzAlarm
         {% endblock %}
     </title>
     {% block head %}{% endblock %}
 </head>
+
 <body>
-    {% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Interesting News</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add-post' %}">Add New Post</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav> {% endcomment %}
-    
-    
-    <!--
-        HEADER
-    -->
-    <header>
-      <!-- NAV -->
-      <div class="nav container">
 
-        <!-- LOGO -->
-        <a href="{% url 'home' %}" class="logo">Interesting <span>News<span></a>
-        
-        <!-- Home Btn -->
-        {% if current_url_name != 'home' %}
-            <a href="{% url 'home' %}" class="login">Home</a>
-        {% endif %}
-      </div>
-    </header>
+  <!--
+      HEADER
+  -->
+  <header>
+    <!-- NAV -->
+    <div class="nav container">
 
-    {% block home_section %}
-    {% endblock %}
-
-    {% block content %}
-
-        {% endblock %}
-
-
-    {% comment %} <div class="container">
-        {% block content %}
-
-        {% endblock %}
-    </div> {% endcomment %}
-
-    <div class="footer container">
-      <p>Copyright &copy; 2024 Interesting News. All rights reserved.</p>
-
-      <div class="social">
-        <a href="#"><i class='bx bxl-facebook'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class='bx bxl-instagram'></i></a>
-      </div>
+      <!-- LOGO -->
+      <a href="{% url 'home' %}" class="logo">The<span>Buzz</span>Alarm</a>
+      
+      <!-- Home Btn -->
+      {% if current_url_name != 'home' %}
+          <a href="{% url 'home' %}" class="login">Home</a>
+      {% endif %}
     </div>
+  </header>
 
-    <script src="{% static 'blog/js/header.js' %}"></script>
+  {% block home_section %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  <div class="footer container">
+    <p>Copyright &copy; {% now "Y" %} TheBuzzAlarm. All rights reserved.</p>
+
+    <div class="social">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+    </div>
+  </div>
+
+  <script src="{% static 'blog/js/header.js' %}"></script>
 </body>
 </html>

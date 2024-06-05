@@ -1,19 +1,27 @@
+{% extends 'blog/blog_base.html' %}
+
 {% block head %}
     <style>
+        /* Ensure the body and html occupy the full height */
+        html, body {
+            height: calc(100% - 80px);
+            margin: 0;
+            padding: 0;
+        }
+
         /* General styles for the form container */
         .form-container {
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
-            margin-top: 50px;
+            margin-top: 80px;
             padding: 2rem;
-            background-color: #f7f7f7;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            height: calc(100vh - 160px); /* Adjust height as needed */
         }
 
         /* Header styles */
         .form-container h2 {
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 1.5rem;
         }
@@ -35,17 +43,33 @@
             border-radius: 5px;
         }
 
+        .form-container form input[type="text"],
+        .form-container form input[type="email"],
+        .form-container form input[type="password"],
+        .form-container form input[type="submit"],
+        .form-container form button {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         /* Styles for buttons */
         .form-container form input[type="submit"],
         .form-container form button {
-            background-color: #007bff;
+            background-color: var(--second-color);
             color: white;
             cursor: pointer;
         }
 
-        .form-container form input[type="submit"]:hover,
+        .form-container form button {
+            padding: 12px 0px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
         .form-container form button:hover {
-            background-color: #0056b3;
+            background: hsl(24, 98%, 58%);
+            transition: transform 0.3s, background 0.3s;
+            transform: scale(1.1);
         }
     </style>
 {% endblock %}
@@ -56,6 +80,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
         <button type="submit">Login</button>
     </form>
 </div>

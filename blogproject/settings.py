@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get(
     "django-insecure-7*5-*%$k!7qgb^9s$1xw9*sa+1nwob08*fj4+r=)p-we6y1&52"
 )
 
-DEBUG = str(os.environ.get("DEBUG")) == "1"
+# DEBUG = str(os.environ.get("DEBUG")) == "1"
+DEBUG = True
 
 
 ALLOWED_HOSTS = []
@@ -77,6 +78,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "blog.context_processors.current_url_name",
             ],
         },
     },

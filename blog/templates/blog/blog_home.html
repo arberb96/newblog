@@ -15,104 +15,13 @@
     {% block home_section %}
         <section class="home" id="home">
             <div class="home-text container">
-                <h2 class="home-title">Interesting News</h2>
+                <h2 class="home-title">The<span>Buzz</span>Alarm</h2>
                 <span class="home-subtitle">The latest news from around the world</span>
             </div>
         </section>
     {% endblock %}
 
     {% block content %}
-
-
-    {% comment %} <h1>Posts</h1> {% endcomment %}
-
-        {% comment %} <section class="post container">
-            
-            
-            <div class="post-box">
-                <img src="{% static 'images/post-1.jpg' %}" alt="" class="post-img">
-                
-                <a href="{% url 'test-post' %}" class="post-title">
-                    How to create a post in django blog
-                </a>
-
-                <span class="post-date">1 hour ago</span>
-                <p class="post-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Repellendus, deserunt.
-                </p>
-
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
-                    <span class="profile-name">John Doe</span>
-                </div>
-            </div>
-
-
-            <div class="post-box">
-                <img src="{% static 'images/post-2.jpg' %}" alt="" class="post-img">
-                
-                <a href="{% url 'test-post' %}" class="post-title">
-                    How to create a post in django blog
-                </a>
-
-                <span class="post-date">1 hour ago</span>
-                <p class="post-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Repellendus, deserunt.
-                </p>
-
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
-                    <span class="profile-name">John Doe</span>
-                </div>
-            </div>
-
-
-            <div class="post-box">
-                <img src="{% static 'images/post-3.jpg' %}" alt="" class="post-img">
-                
-                <a href="{% url 'test-post' %}" class="post-title">
-                    How to create a post in django blog
-                </a>
-
-                <span class="post-date">1 hour ago</span>
-                <p class="post-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Repellendus, deserunt.
-                </p>
-
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
-                    <span class="profile-name">John Doe</span>
-                </div>
-            </div>
-
-
-            <div class="post-box">
-                <img src="{% static 'images/post-4.jpg' %}" alt="" class="post-img">
-                
-                <a href="{% url 'test-post' %}" class="post-title">
-                    How to create a post in django blog
-                </a>
-
-                <span class="post-date">1 hour ago</span>
-                <p class="post-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Repellendus, deserunt.
-                </p>
-
-                <!-- Profile -->
-                <div class="profile">
-                    <img src="{% static 'images/profile-test.jpg' %}" alt="" class="profile-img">
-                    <span class="profile-name">John Doe</span>
-                </div>
-            </div>
-
-        </section> {% endcomment %}
 
         <section class="post container">
             {% for post in page_obj %}
@@ -126,14 +35,6 @@
                     <span class="post-date">
                         <box-icon name='calendar' class="calendar-icon"></box-icon>
                         {{ post.date|timesince }} ago
-                        {% comment %} 12/01/2023 {% endcomment %}
-                    </span>
-
-                    <span class="post-date">
-                        <box-icon name='calendar' class="calendar-icon"></box-icon>
-                        {% comment %} {{ post.date|timesince }} ago {% endcomment %}
-                        {{ post.date }}
-                        {% comment %} 12/01/2023 {% endcomment %}
                     </span>
                     
                     <p class="post-description">
